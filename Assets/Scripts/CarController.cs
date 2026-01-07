@@ -2,29 +2,68 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public float forwardForce = 3f;
-    public float turnSpeed = 20f;
+    public float acceleration = 50f;
+    public float reverseAcceleration = 30f;
+    public float turnSpeed = 80f;
+    public float maxSpeed = 25f;
 
     Rigidbody rb;
-    1
+
+    Vector3 startPos;
+    Quaternion startRot;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        // save starting position + rotation
+        startPos = transform.position;
+        startRot = transform.rotation;
     }
 
     void FixedUpdate()
     {
+        float currentSpeed = rb.linearVelocity.magnitude;
+
+        // ---------- FORWARD ----------
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(transform.forward * forwardForce);
+            if (currentSpeed < maxSpeed)
+                rb.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
         }
-        if (Input.GetKey(KeyCode.A))
+
+        // ---------- REVERSE ----------
+        if (Input.GetKey(KeyCode.S))
         {
-            transform.Rotate(0f, -turnSpeed * Time.deltaTime, 0f);
+            rb.AddForce(-transform.forward * reverseAcceleration, ForceMode.Acceleration);
         }
-        if(Input.GetKey(KeyCode.D))
+
+        // ---------- TURNING ----------
+        if (currentSpeed > 0.5f)   // only turn while moving
         {
-            transform.Rotate(0f, turnSpeed * Time.deltaTime, 0f);
+            if (Input.GetKey(KeyCode.A))
+                transform.Rotate(0f, -turnSpeed * Time.deltaTime, 0f);
+
+            if (Input.GetKey(KeyCode.D))
+                transform.Rotate(0f, turnSpeed * Time.deltaTime, 0f);
         }
+    }
+
+    void Update()
+    {
+        // press R = reset car
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartCar();
+        }
+    }
+
+    void RestartCar()
+    {
+        transform.position = startPos;
+        transform.rotation = startRot;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }
