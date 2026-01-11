@@ -12,18 +12,25 @@ public class CarController : MonoBehaviour
     public float bankAngle = 15f;
     public float bankSpeed = 5f;
 
+    [Range(0.5f, 1f)]
+    public float grip = 0.85f; // 0.85 = good. Lower = more grip
+
     Rigidbody rb;
 
     Vector3 startPos;
     Quaternion startRot;
 
+    Quaternion visualStartRot;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        // save starting position + rotation
         startPos = transform.position;
         startRot = transform.rotation;
+
+        if (carVisual != null)
+            visualStartRot = carVisual.localRotation;
     }
 
     void FixedUpdate()
@@ -40,7 +47,8 @@ public class CarController : MonoBehaviour
         // ---------- REVERSE ----------
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(-transform.forward * reverseAcceleration, ForceMode.Acceleration);
+            // reverse reduced so it doesn't glitch
+            rb.AddForce(-transform.forward * reverseAcceleration * 0.6f, ForceMode.Acceleration);
         }
 
         // ---------- TURN INPUT ----------
@@ -48,32 +56,37 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) steer = -1f;
         if (Input.GetKey(KeyCode.D)) steer = 1f;
 
-        // ---------- TURNING (Rigidbody Rotation ✅) ----------
-        if (currentSpeed > 0.5f) // only turn while moving
+        // ---------- TURNING (speed based, smooth) ----------
+        if (currentSpeed > 0.5f)
         {
-            Quaternion turnRotation = Quaternion.Euler(0f, steer * turnSpeed * Time.fixedDeltaTime, 0f);
+            float steerStrength = Mathf.Lerp(0f, turnSpeed, currentSpeed / maxSpeed);
+
+            Quaternion turnRotation = Quaternion.Euler(0f, steer * steerStrength * Time.fixedDeltaTime, 0f);
             rb.MoveRotation(rb.rotation * turnRotation);
         }
+
+        // ---------- SIDE GRIP (stops sliding) ----------
+        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+        localVel.x *= grip;
+        rb.linearVelocity = transform.TransformDirection(localVel);
 
         // ---------- BANKING VISUAL ONLY ----------
         if (carVisual != null)
         {
             float targetZ = -steer * bankAngle;
 
-            // ✅ banking should ONLY tilt Z axis
-            Quaternion targetRot = Quaternion.Euler(0f, 0f, targetZ);
+            Quaternion targetRot = visualStartRot * Quaternion.Euler(0f, 0f, targetZ);
 
             carVisual.localRotation = Quaternion.Lerp(
                 carVisual.localRotation,
                 targetRot,
-                bankSpeed * Time.deltaTime
+                bankSpeed * Time.fixedDeltaTime
             );
         }
     }
 
     void Update()
     {
-        // press R = reset car
         if (Input.GetKeyDown(KeyCode.R))
         {
             RestartCar();
@@ -87,5 +100,8 @@ public class CarController : MonoBehaviour
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+
+        if (carVisual != null)
+            carVisual.localRotation = visualStartRot;
     }
 }
