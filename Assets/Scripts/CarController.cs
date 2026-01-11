@@ -47,7 +47,6 @@ public class CarController : MonoBehaviour
         // ---------- REVERSE ----------
         if (Input.GetKey(KeyCode.S))
         {
-            // reverse reduced so it doesn't glitch
             rb.AddForce(-transform.forward * reverseAcceleration * 0.6f, ForceMode.Acceleration);
         }
 
@@ -55,6 +54,13 @@ public class CarController : MonoBehaviour
         float steer = 0f;
         if (Input.GetKey(KeyCode.A)) steer = -1f;
         if (Input.GetKey(KeyCode.D)) steer = 1f;
+
+        // ✅ Detect if moving forward or reverse
+        float forwardDir = Vector3.Dot(rb.linearVelocity, transform.forward);
+
+        // ✅ Invert steering when reversing (gaming controls)
+        if (forwardDir < -0.1f)
+            steer *= -1f;
 
         // ---------- TURNING (speed based, smooth) ----------
         if (currentSpeed > 0.5f)
