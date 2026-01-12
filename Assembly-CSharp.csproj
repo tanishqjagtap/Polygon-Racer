@@ -52,6 +52,7 @@
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\CarSpawner.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\MiniMapFollow.cs" />
   </ItemGroup>
