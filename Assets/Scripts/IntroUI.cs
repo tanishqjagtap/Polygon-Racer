@@ -11,11 +11,6 @@ public class IntroUI : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        Debug.Log("Quit pressed");
-    }
-
-    public void CarSelect()
-    {
-        Debug.Log("Car Select coming soon!");
+        Debug.Log("Quit");
     }
 }

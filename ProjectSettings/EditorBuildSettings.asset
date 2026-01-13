@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DefaultScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity/Intro.unity
+    guid: 80806fcb1380dc44f900915dbd1904be
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity/MainMenu.unity
+    guid: 3f2d84846c07c3c4595afd3f7cfaa928
+  - enabled: 1
+    path: Assets/Scenes/Track_Sunny/Track_Sunny.unity
+    guid: 32cbf3156eebbbb49b66a0ebcc3d139b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
