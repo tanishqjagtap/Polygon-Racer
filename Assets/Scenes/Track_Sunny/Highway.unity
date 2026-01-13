@@ -12307,6 +12307,7 @@ GameObject:
   - component: {fileID: 1772518180}
   - component: {fileID: 1772518186}
   - component: {fileID: 1772518187}
+  - component: {fileID: 1772518188}
   m_Layer: 0
   m_Name: CarRoot
   m_TagString: Untagged
@@ -12480,6 +12481,20 @@ MonoBehaviour:
   wheelRL: {fileID: 1945765679}
   wheelRR: {fileID: 20714231}
   wheelRadius: 0.35
+--- !u!114 &1772518188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772518179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696c03f2a9afa084fb5f2517b9d9b7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarSpawner
+  startPoint: {fileID: 1148124742}
+  carRb: {fileID: 1772518184}
 --- !u!1 &1778481103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6582077251671736838, guid: d7fc9246b99afab45aef29466c12b588, type: 3}
