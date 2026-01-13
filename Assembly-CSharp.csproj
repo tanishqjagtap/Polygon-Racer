@@ -48,11 +48,13 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\SpeedometerUI.cs" />
+    <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\IntroUI.cs" />
     <Compile Include="Assets\Scripts\CarSpawner.cs" />
+    <Compile Include="Assets\Scripts\SpeedometerUi.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\MiniMapFollow.cs" />
   </ItemGroup>
