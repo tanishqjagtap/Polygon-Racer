@@ -7,5 +7,9 @@ public class TrackMenuUI : MonoBehaviour
     {
         SceneManager.LoadScene("Track_Sunny");
     }
+    public void LoadIntroUI()
+    {
+        SceneManager.LoadScene("Intro");
+    }
 }
     
