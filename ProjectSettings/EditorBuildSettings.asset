@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Track_Sunny/Track_Sunny.unity
     guid: 32cbf3156eebbbb49b66a0ebcc3d139b
+  - enabled: 1
+    path: Assets/Scenes/Garage/Garage.unity
+    guid: b32c6382909a6bd4eaf83d36c58d3ba3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

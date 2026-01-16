@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GarageCarSelector : MonoBehaviour
 {
@@ -95,5 +96,12 @@ public class GarageCarSelector : MonoBehaviour
         index--;
         if (index < 0) index = carPrefabs.Length - 1;
         SpawnCar();
+    }
+    public void SelectCar()
+    {
+        PlayerPrefs.SetInt("SelectedCarIndex", index);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene("Intro"); // <-- put your Intro scene name here
     }
 }
