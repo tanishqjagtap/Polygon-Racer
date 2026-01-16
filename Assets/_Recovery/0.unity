@@ -1276,7 +1276,7 @@ MonoBehaviour:
   - {fileID: 7829240225872677464, guid: 8e6f8ec1b8fb9e2498d123746a100031, type: 3}
   - {fileID: 8686945213723550011, guid: e04c6a04cb68d104bbe0082fad6365ee, type: 3}
   - {fileID: 919132149155446097, guid: 2eec4ecf2a2e5e549b85dffd59521404, type: 3}
-  - {fileID: 7155772080715587177, guid: ec1c12481f4a5eb419f4877859fc223a, type: 3}
+  - {fileID: 7783897012754993325, guid: b274146e3e9030f408cbee64a3cba328, type: 3}
   rotateSpeed: 25
   targetSize: 3
   groundOffset: 0.05
