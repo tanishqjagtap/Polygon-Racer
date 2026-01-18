@@ -11,5 +11,15 @@ public class TrackMenuUI : MonoBehaviour
     {
         SceneManager.LoadScene("Intro");
     }
+    public void LoadMountain_Track()
+    {
+        SceneManager.LoadScene("Mountain_Track");
+    }
+    public void LoadNight_track()
+    {
+        SceneManager.LoadScene("Night_track");
+    }
+
+
 }
     
