@@ -61,3 +61,4 @@ public class IntroCarSpawner : MonoBehaviour
         car.transform.position -= new Vector3(centerOffset.x, 0f, centerOffset.z);
     }
 }
+
