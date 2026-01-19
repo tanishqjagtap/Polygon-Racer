@@ -2788,7 +2788,7 @@ GameObject:
   - component: {fileID: 1711135765}
   - component: {fileID: 1711135764}
   - component: {fileID: 1711135763}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2888,6 +2888,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1736635302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1518643023619417194, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
+  m_PrefabInstance: {fileID: 1082972965110156490}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1736635306
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736635302}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.92152274
+  m_Height: 4.7220554
+  m_Direction: 2
+  m_Center: {x: -0.4554304, y: 1.190259, z: -0.48047352}
 --- !u!1 &1860002044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,7 +3418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2285323059543510614, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.93
+      value: 3.885
       objectReference: {fileID: 0}
     - target: {fileID: 2285323059543510614, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3437,6 +3465,10 @@ PrefabInstance:
       value: 4.281006
       objectReference: {fileID: 0}
     - target: {fileID: 4999231413911722943, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999231413911722943, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_Center.x
       value: -0.42773438
       objectReference: {fileID: 0}
@@ -3450,19 +3482,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476618720736135411, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: turnSpeed
-      value: 120
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476618720736135411, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7380242763225832867, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_Mass
-      value: 1200
+      value: 500
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4999231413911722943, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2285323059543510614, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2024494424}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1518643023619417194, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1736635306}
   m_SourcePrefab: {fileID: 100100000, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
