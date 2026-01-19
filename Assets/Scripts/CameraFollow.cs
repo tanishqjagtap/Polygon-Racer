@@ -1,21 +1,42 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CarCameraFollow : MonoBehaviour
 {
     public Transform target;
-    public Vector3 offset;
-    public float smoothSpeed = 5f;
+
+    public Vector3 offset = new Vector3(0f, 3f, -4.3f);
+
+    public float positionSmoothTime = 0.08f;   // lower = tighter camera
+    public float rotationSmooth = 8f;
+
+    public float fov = 66f;
+
+    private Camera cam;
+    private Vector3 velocity = Vector3.zero;
+
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+        if (cam != null) cam.fieldOfView = fov;
+    }
 
     void LateUpdate()
     {
         if (target == null) return;
 
-        Vector3 desiredPosition = target.position + target.TransformDirection(offset);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        // Desired camera position
+        Vector3 desiredPos = target.position + target.rotation * offset;
 
-        transform.position = smoothedPosition;
+        // ✅ SmoothDamp keeps distance stable (no zoom-out feeling)
+        transform.position = Vector3.SmoothDamp(
+            transform.position,
+            desiredPos,
+            ref velocity,
+            positionSmoothTime
+        );
 
-        transform.LookAt(target);
+        // Rotation
+        Quaternion desiredRot = Quaternion.LookRotation(target.position - transform.position, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRot, rotationSmooth * Time.deltaTime);
     }
 }
-    
