@@ -48,18 +48,20 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\FinalCarController.cs" />
     <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
     <Compile Include="Assets\Scripts\carSpawner1.cs" />
     <Compile Include="Assets\Scripts\GarageCarSelector.cs" />
-    <Compile Include="Assets\Scripts\CarControllerRealistic.cs" />
+    <Compile Include="Assets\Scripts\SimpleCarController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\CarDisplaySettings.cs" />
     <Compile Include="Assets\Scripts\IntroUI.cs" />
     <Compile Include="Assets\Scripts\CarSpawner.cs" />
     <Compile Include="Assets\Scripts\SpeedometerUi.cs" />
     <Compile Include="Assets\Scripts\CarGarageFix.cs" />
+    <Compile Include="Assets\Scripts\ForceTest.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\IntroSpawner.cs" />
     <Compile Include="Assets\Scripts\MiniMapFollow.cs" />
