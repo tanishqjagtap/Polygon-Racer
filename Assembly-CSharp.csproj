@@ -48,6 +48,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\All Assets\Cars\f40\final.cs" />
     <Compile Include="Assets\Scripts\FinalCarController.cs" />
     <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Assets\Scripts\CarDisplaySettings.cs" />
     <Compile Include="Assets\Scripts\IntroUI.cs" />
     <Compile Include="Assets\Scripts\CarSpawner.cs" />
+    <Compile Include="Assets\Scripts\ArcadeCarController.cs" />
     <Compile Include="Assets\Scripts\SpeedometerUi.cs" />
     <Compile Include="Assets\Scripts\CarGarageFix.cs" />
     <Compile Include="Assets\Scripts\ForceTest.cs" />
