@@ -742,7 +742,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 41.7
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -788,9 +788,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 2024494424}
-  offset: {x: 0, y: 1.19, z: -2.86}
-  positionSmoothTime: 0.08
-  rotationSmooth: 8
+  height: 3
+  distance: 4.3
+  positionSmooth: 0.1
+  yawFollowSpeed: 3.5
+  minSpeedToFollowYaw: 2
+  lookOffset: {x: 0, y: 2.22, z: 0.6}
   fov: 66
 --- !u!114 &609367163
 MonoBehaviour:
@@ -2893,7 +2896,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1518643023619417194, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
   m_PrefabInstance: {fileID: 1082972965110156490}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1736635310
+--- !u!114 &1736635303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2902,17 +2905,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736635302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1628b3574bfc6564d957eb3f0926c67f, type: 3}
+  m_Script: {fileID: 11500000, guid: a7c5f080232ac7042963af7a9c55a239, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RealCarController
-  carVisual: {fileID: 0}
-  moveSpeed: 18
-  accel: 10
-  reverseSpeed: 10
-  turnSpeed: 120
-  bankAngle: 12
+  m_EditorClassIdentifier: Assembly-CSharp::New
+  carVisual: {fileID: -8679921383154817045, guid: 637426fab0585de4885ca3e425dea492, type: 3}
+  acceleration: 55
+  reverseAcceleration: 35
+  maxSpeed: 28
+  turnSpeed: 90
+  minTurnSpeed: 35
+  steeringSmooth: 6
+  grip: 0.82
+  rollAngle: 12
   pitchAngle: 4
-  animSmooth: 8
+  visualSmooth: 8
+  shockStrength: 0.15
+  shockSpeed: 8
 --- !u!1 &1860002044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,7 +3172,7 @@ Transform:
   m_GameObject: {fileID: 2024494423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.488, y: 1.672, z: -2.35}
+  m_LocalPosition: {x: -0.488, y: -0.66, z: -1.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3415,7 +3423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2285323059543510614, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.927
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 2285323059543510614, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3491,7 +3499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7380242763225832867, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_ImplicitCom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380242763225832867, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       propertyPath: m_LinearDamping
@@ -3501,9 +3509,14 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7380242763225832867, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6476618720736135411, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8598345574505832125, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2285323059543510614, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       insertIndex: -1
@@ -3511,7 +3524,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1518643023619417194, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1736635310}
+      addedObject: {fileID: 1736635303}
   m_SourcePrefab: {fileID: 100100000, guid: 5feffb52b1f481c428d301f871c10eb4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
