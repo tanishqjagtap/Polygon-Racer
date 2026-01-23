@@ -50,11 +50,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CarCameraFollowNFS.cs" />
     <Compile Include="Assets\Scripts\FinalCarController.cs" />
+    <Compile Include="Assets\Scripts\Race Manager\FinishLine.cs" />
     <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
     <Compile Include="Assets\Scripts\carSpawner1.cs" />
     <Compile Include="Assets\Scripts\GarageCarSelector.cs" />
+    <Compile Include="Assets\Scripts\Race Manager\RaceManager.cs" />
     <Compile Include="Assets\Scripts\SimpleCarController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\CarDisplaySettings.cs" />
