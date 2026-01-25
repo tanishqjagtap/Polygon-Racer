@@ -740,6 +740,7 @@ GameObject:
   - component: {fileID: 757076810}
   - component: {fileID: 757076809}
   - component: {fileID: 757076808}
+  - component: {fileID: 757076812}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -842,6 +843,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &757076812
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757076807}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &805855744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,13 +1244,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1638745176}
+      - m_Target: {fileID: 1638745177}
         m_TargetAssemblyTypeName: GarageCarSelector, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: PrevCar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1554,9 +1577,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GarageCarSelector
   carPoint: {fileID: 1053361250}
   carPrefabs:
-  - {fileID: 5929608118339390469, guid: 9bcb08f91fe704047b6ca8dc94ad9f51, type: 3}
-  - {fileID: 2634636697557820065, guid: 566fa7010a2adda49bd60ff34053aa67, type: 3}
-  - {fileID: 7155772080715587177, guid: ec1c12481f4a5eb419f4877859fc223a, type: 3}
+  - {fileID: 1676695654913498611, guid: e48d45a646d84364ea014c93d6f1f38f, type: 3}
+  - {fileID: 2169021090551189460, guid: d689c62459c1b844d940bfbcf55c25a3, type: 3}
+  - {fileID: 8212792407860874876, guid: c3fc31b9bd678bc48b702ac544618581, type: 3}
   rotateSpeed: 25
   targetSize: 3
   groundOffset: 0.05
