@@ -1721,8 +1721,8 @@ MonoBehaviour:
   carPoint: {fileID: 1858009959}
   carPrefabs:
   - {fileID: 5929608118339390469, guid: 9bcb08f91fe704047b6ca8dc94ad9f51, type: 3}
-  - {fileID: 2634636697557820065, guid: 566fa7010a2adda49bd60ff34053aa67, type: 3}
-  - {fileID: 7155772080715587177, guid: ec1c12481f4a5eb419f4877859fc223a, type: 3}
+  - {fileID: 2169021090551189460, guid: d689c62459c1b844d940bfbcf55c25a3, type: 3}
+  - {fileID: 8212792407860874876, guid: c3fc31b9bd678bc48b702ac544618581, type: 3}
   rotateSpeed: 25
   targetSize: 3
   groundOffset: 0.05
