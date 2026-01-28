@@ -6,7 +6,7 @@ public class ArcadeCarControllerSmooth : MonoBehaviour
     public Transform carVisual;
 
     [Header("Movement")]
-    public float moveSpeed = 18f;
+    public float moveSpeed = 10f;
     public float reverseSpeed = 10f;
     public float accel = 8f;
 
