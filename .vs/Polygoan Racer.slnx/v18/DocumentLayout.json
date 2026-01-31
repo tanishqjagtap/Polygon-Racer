@@ -1,0 +1,153 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\UNITY PROJECTS\\Polygoan Racer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\carcamerafollownfs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carcamerafollownfs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\carspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\carspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\garagecarselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\garagecarselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\arcadecarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\arcadecarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\gamedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\finishline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\finishline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\all assets\\cars\\f40\\new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\all assets\\cars\\f40\\new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ArcadeCarController.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\ArcadeCarController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ArcadeCarController.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\ArcadeCarController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ArcadeCarController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T09:21:50.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameData.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\GameData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameData.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\GameData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T09:11:53.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarSpawner.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CarSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\CarSpawner.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CarSpawner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\CarSpawner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T09:09:59.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FinishLine.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\FinishLine.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\FinishLine.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\FinishLine.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\FinishLine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T08:58:13.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RaceManager.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAgwIIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T08:56:13.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CarCameraFollowNFS.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\CarCameraFollowNFS.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CarCameraFollowNFS.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\CarCameraFollowNFS.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CarCameraFollowNFS.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T06:34:17.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "New.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\All Assets\\Cars\\f40\\New.cs",
+              "RelativeDocumentMoniker": "Assets\\All Assets\\Cars\\f40\\New.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\All Assets\\Cars\\f40\\New.cs",
+              "RelativeToolTip": "Assets\\All Assets\\Cars\\f40\\New.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T06:14:50.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GarageCarSelector.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\GarageCarSelector.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GarageCarSelector.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\GarageCarSelector.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GarageCarSelector.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAcwGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T14:17:23.016Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

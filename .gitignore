@@ -5,4 +5,21 @@
 [Bb]uilds/
 [Ll]ogs/
 UserSettings/
-.vs/
+
+# Unity cache & generated
+MemoryCaptures/
+
+# Ignore huge map assets
+Assets/All Assets/Maps/
+
+# Ignore big model & texture files
+*.fbx
+*.zip
+*.psd
+*.tga
+*.tif
+*.jpg
+*.png
+
+# Keep meta files
+!*.meta
