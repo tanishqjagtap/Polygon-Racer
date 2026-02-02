@@ -32,6 +32,11 @@ public class ArcadeCarControllerSmooth : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RaceManager.Instance.ResetToCheckpoint(gameObject);
+        }
+
         // INPUT
         float throttle = 0f;
         if (Input.GetKey(KeyCode.W)) throttle = 1f;
