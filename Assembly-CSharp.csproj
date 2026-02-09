@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\ForceTest.cs" />
     <Compile Include="Assets\Scripts\IntroSpawner.cs" />
     <Compile Include="Assets\Scripts\MiniMapFollow.cs" />
+    <Compile Include="Assets\Scripts\UIHoverZoom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

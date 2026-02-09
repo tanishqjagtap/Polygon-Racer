@@ -3,21 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class TrackMenuUI : MonoBehaviour
 {
-    public void LoadSunnyTrack()
+    public void LoadOval()
     {
-        SceneManager.LoadScene("Track_Sunny");
+        SceneManager.LoadScene("Oval");
     }
     public void LoadIntroUI()
     {
         SceneManager.LoadScene("Intro");
     }
-    public void LoadMountain_Track()
+    public void LoadKingsdown()
     {
-        SceneManager.LoadScene("Mountain_Track");
+        SceneManager.LoadScene("Kingsdown");
     }
-    public void LoadNight_track()
+    public void LoadFrance()
     {
-        SceneManager.LoadScene("Night_track");
+        SceneManager.LoadScene("France");
     }
 
 
