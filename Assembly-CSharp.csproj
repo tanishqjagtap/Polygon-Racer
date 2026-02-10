@@ -55,6 +55,7 @@
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CheckpointTrigger.cs" />
+    <Compile Include="Assets\Scripts\Race Manager\CountdownManager.cs" />
     <Compile Include="Assets\Scripts\GarageCarSelector.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CarSpawner.cs" />
     <Compile Include="Assets\Scripts\Realism test\Real.cs" />
