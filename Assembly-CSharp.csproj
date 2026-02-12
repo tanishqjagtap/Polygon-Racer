@@ -65,9 +65,9 @@
     <Compile Include="Assets\Scripts\CarDisplaySettings.cs" />
     <Compile Include="Assets\Scripts\IntroUI.cs" />
     <Compile Include="Assets\Scripts\ArcadeCarController.cs" />
+    <Compile Include="Assets\Testing\Car.cs" />
     <Compile Include="Assets\Scripts\SpeedometerUi.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
-    <Compile Include="Assets\All Assets\Cars\f40\New.cs" />
     <Compile Include="Assets\Scripts\CarGarageFix.cs" />
     <Compile Include="Assets\Scripts\ForceTest.cs" />
     <Compile Include="Assets\Scripts\IntroSpawner.cs" />

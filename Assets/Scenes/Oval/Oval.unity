@@ -2687,6 +2687,79 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6980225092251974683, guid: cf3ad557289d1e74aba4c1392c61bf91, type: 3}
+--- !u!1001 &692973037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
+      propertyPath: m_Name
+      value: ViperSRT
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 795213665fc629c4ba7711c6383e0be8, type: 3}
 --- !u!64 &702964066
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6675,8 +6748,8 @@ MonoBehaviour:
   oneImage: {fileID: 1362402186}
   goImage: {fileID: 1333947141}
   audioSource: {fileID: 0}
-  tickSound: {fileID: 0}
-  goSound: {fileID: 0}
+  tickSound: {fileID: 8300000, guid: 1ed3731772cfea04bbc9e66c9cdf716a, type: 3}
+  goSound: {fileID: 8300000, guid: 76145217b9652164da34e732f040a9bd, type: 3}
 --- !u!136 &901572102
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11430,3 +11503,4 @@ SceneRoots:
   - {fileID: 900805501}
   - {fileID: 480255838}
   - {fileID: 65947876}
+  - {fileID: 692973037}
