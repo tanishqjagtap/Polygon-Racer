@@ -19,8 +19,8 @@ public class FinishLineTrigger : MonoBehaviour
         finished = true;
         Debug.Log("FINISH LINE CROSSED!");
 
-        // Disable player control only
-        var controller = other.GetComponent<CarMove>();
+        // 🔥 TEMP SAFE DISABLE (no CarMove dependency)
+        MonoBehaviour controller = other.GetComponent<MonoBehaviour>();
         if (controller != null)
             controller.enabled = false;
     }

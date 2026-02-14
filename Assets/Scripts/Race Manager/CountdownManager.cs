@@ -9,7 +9,7 @@ public class CountdownManager : MonoBehaviour
     public Image oneImage;
     public Image goImage;
 
-    private CarMove playerCar; // we will find it automatically
+    private MonoBehaviour playerCar; // TEMP generic reference
 
     void Start()
     {
@@ -23,14 +23,12 @@ public class CountdownManager : MonoBehaviour
 
     IEnumerator FindCarAndStart()
     {
-        // Wait until the car is spawned
+        // Wait until any car controller is found (temporary)
         while (playerCar == null)
         {
-            playerCar = FindObjectOfType<CarMove>();
+            playerCar = FindObjectOfType<MonoBehaviour>();
             yield return null;
         }
-
-        playerCar.enabled = false; // disable control during countdown
 
         yield return StartCoroutine(CountdownRoutine());
     }
@@ -50,8 +48,6 @@ public class CountdownManager : MonoBehaviour
         oneImage.gameObject.SetActive(false);
 
         goImage.gameObject.SetActive(true);
-
-        playerCar.enabled = true; // ENABLE control when GO appears
 
         yield return new WaitForSeconds(1f);
         goImage.gameObject.SetActive(false);

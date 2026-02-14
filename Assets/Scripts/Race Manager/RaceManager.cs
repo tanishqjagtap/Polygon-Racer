@@ -23,7 +23,8 @@ public class RaceManager : MonoBehaviour
     public AudioClip tickSound;
     public AudioClip goSound;
 
-    private CarMove playerCar;
+    // 🔥 TEMP — no hard dependency
+    private MonoBehaviour playerCar;
 
     private void Awake()
     {
@@ -32,8 +33,9 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
-        // Find player car and lock movement
-        playerCar = FindObjectOfType<CarMove>();
+        // 🔥 TEMP: find ANY behaviour on car root
+        playerCar = FindObjectOfType<MonoBehaviour>();
+
         if (playerCar != null)
             playerCar.enabled = false;
 
@@ -101,7 +103,8 @@ public class RaceManager : MonoBehaviour
 
         Debug.Log("RACE FINISHED!");
 
-        var controller = car.GetComponent<CarMove>();
+        // 🔥 TEMP SAFE DISABLE
+        var controller = car.GetComponent<MonoBehaviour>();
         if (controller != null)
             controller.enabled = false;
 
