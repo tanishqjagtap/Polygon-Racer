@@ -5,18 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\testing\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\testing\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\finishlinetrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\finishlinetrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\countdownmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\countdownmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,51 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Car.cs",
-              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\Car.cs",
-              "RelativeDocumentMoniker": "Assets\\Testing\\Car.cs",
-              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\Car.cs",
-              "RelativeToolTip": "Assets\\Testing\\Car.cs",
-              "ViewState": "AgIAAAoBAAAAAAAAAAAgwIcBAAABAAAAAAAAAA==",
+              "Title": "car.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\car.cs",
+              "RelativeDocumentMoniker": "Assets\\Testing\\car.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\car.cs",
+              "RelativeToolTip": "Assets\\Testing\\car.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T15:33:38.251Z",
+              "WhenOpened": "2026-02-15T16:02:10.483Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FinishLineTrigger.cs",
-              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
-              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T15:16:28.857Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RaceManager.cs",
-              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
-              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAgwHYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T14:59:22.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CountdownManager.cs",
-              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CountdownManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\CountdownManager.cs",
-              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CountdownManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\CountdownManager.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwDcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T14:54:33.218Z"
             }
           ]
         }
