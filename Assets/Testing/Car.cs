@@ -1,255 +1,141 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.Events;
 
-// 🔥 ULTRA REALISTIC CAR CONTROLLER (UPDATED — FIXED reverse for real)
-// Controls:
-//   W / Up → forward
-//   S / Down → brake then reverse
-//   R → reset car
-
-[RequireComponent(typeof(Rigidbody))]
-public class car : MonoBehaviour
+public class Car : MonoBehaviour
 {
-    [Header("=== ENGINE SPECS ===")]
-    public float engineCC = 3000f;
-    public float maxRPM = 7500f;
-    public float idleRPM = 800f;
-    public float maxTorque = 500f;
-    public AnimationCurve torqueCurve;
+    public bool motorCycleControl = false;
+    public float motorcycleTiltDamping = 2f;
+    public float motorcycleYawDamping = 1f;
+    public float restoreStrength = 1f;
+    public float restoreStrengthY = 1f;
+    public float steerAssistTarget = 0.75f;
+    public float coefFrictionMultiplier = 1.0f;
+    public Vector3 centerOfDownforce = new Vector3(0, 0, 0);
 
-    [Header("=== TRANSMISSION ===")]
-    public float[] gearRatios = { 3.8f, 2.4f, 1.7f, 1.25f, 1.0f, 0.82f };
-    public float finalDriveRatio = 3.73f;
-    public float drivetrainEfficiency = 0.85f;
-    public float shiftUpRPM = 7200f;
-    public float shiftDownRPM = 2500f;
+    [Header("Aerodynamics")]
+    public float dragCoefficient = 0.278f;
+    public float frontalArea = 1.88f;
+    public float airDensity = 1.225f;
+    public float lowSpeedDragCoefficient = 0.37f;
+    public float rollingResistanceCoeff = 0.015f;
+    public GameObject adaptiveBrakingWing;
+    public float brakingWingAngle = 60f;
+    public float brakingWingSpeed = 8f;
+    [HideInInspector] public float currentWingAngle = 0f;
 
-    [Header("=== SPEED & DRAG ===")]
-    public float aerodynamicDrag = 0.32f;
-    public float frontalArea = 2.2f;
-    public float rollingResistance = 8f;
+    public Engine e;
+    public GameObject skidMarkPrefab;
+    public float smoothTurn = 0.03f;
+    float coefStaticFriction = 0.95f;
+    float coefKineticFriction = 0.35f;
+    public GameObject wheelPrefab;
+    public WheelProperties[] wheels;
+    public float wheelGripX = 8f;
+    public float wheelGripZ = 42f;
+    public float suspensionForce = 90f;
+    public float dampAmount = 2.5f;
+    public float suspensionForceClamp = 200f;
+    [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public bool forwards = true;
 
-    [Header("=== WHEELS ===")]
-    public WheelCollider wheelFL;
-    public WheelCollider wheelFR;
-    public WheelCollider wheelRL;
-    public WheelCollider wheelRR;
+    // Assists
+    public bool steeringAssist = true;
+    public bool throttleAssist = true;
+    public bool brakeAssist = true;
+    [HideInInspector] public Vector2 userInput = Vector2.zero;
+    public float downforce = 0.16f;
+    [HideInInspector] public float isBraking = 0f;
 
-    public Transform meshFL;
-    public Transform meshFR;
-    public Transform meshRL;
-    public Transform meshRR;
+    public Vector3 COMOffset = new Vector3(0, -0.2f, 0);
+    public float Inertia = 1.2f;
+    public float carSpeedFactor = 0.03f;
 
-    [Header("=== VISUAL FIXES ===")]
-    public bool flipRearWheels = true;
-
-    [Header("=== RESET SETTINGS ===")]
-    public float resetLift = 1.2f;
-
-    [Header("=== STEERING ===")]
-    public float maxSteerAngle = 30f;
-
-    [Header("=== BRAKES ===")]
-    public float brakeForce = 4000f;
-    public float handbrakeForce = 8000f;
-
-    [Header("=== RUNTIME (READ ONLY) ===")]
-    public float currentRPM;
-    public int currentGear = 1;
-    public float speedKmh;
-
-    private Rigidbody rb;
-    private float throttleInput; // can be negative
-    private float brakeInput;
-    private float steerInput;
-    private float handbrakeInput;
+    float handbrakeInput = 0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = transform.Find("centre of mass") != null
-            ? transform.Find("centre of mass").localPosition
-            : new Vector3(0, -0.45f, 0);
+        if (!rb) rb = gameObject.AddComponent<Rigidbody>();
 
-        if (torqueCurve.length == 0)
+        foreach (var w in wheels)
         {
-            torqueCurve = new AnimationCurve(
-                new Keyframe(0f, 0.7f),
-                new Keyframe(0.25f, 1f),
-                new Keyframe(0.6f, 0.95f),
-                new Keyframe(1f, 0.75f)
-            );
+            w.wheelObject = Instantiate(wheelPrefab, transform);
+            w.wheelObject.transform.localPosition = w.localPosition;
+            w.wheelObject.transform.eulerAngles = transform.eulerAngles;
+            w.wheelObject.transform.localScale = 2f * new Vector3(w.size, w.size, w.size);
+            w.wheelCircumference = 2f * Mathf.PI * w.size;
         }
+
+        rb.centerOfMass += COMOffset;
+        rb.inertiaTensor *= Inertia;
+
+        e.SetRPM(0f);
     }
 
     void Update()
     {
-        float vertical = Input.GetAxis("Vertical");
-        steerInput = Input.GetAxis("Horizontal");
+        // ✅ SIMPLE INPUT (old Input Manager)
+        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        float steerInput = Input.GetAxis("Horizontal");
+        float throttleInput = Input.GetAxis("Vertical");
         handbrakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
 
-        speedKmh = rb.linearVelocity.magnitude * 3.6f;
+        userInput.x = Mathf.Lerp(
+            userInput.x,
+            (moveInput.x + steerInput) / (1 + rb.velocity.magnitude * carSpeedFactor),
+            50f * Time.deltaTime
+        );
 
-        // 🔥 MUCH MORE RELIABLE BRAKE/REVERSE LOGIC
-        if (vertical > 0.05f)
-        {
-            // forward
-            throttleInput = vertical;
-            brakeInput = 0f;
-        }
-        else if (vertical < -0.05f)
-        {
-            // check if car is moving forward in local space
-            float localZ = transform.InverseTransformDirection(rb.linearVelocity).z;
+        userInput.y = Mathf.Lerp(
+            userInput.y,
+            moveInput.y + throttleInput,
+            50f * Time.deltaTime
+        );
 
-            if (localZ > 1f)
-            {
-                // still rolling forward → brake first
-                throttleInput = 0f;
-                brakeInput = 1f;
-            }
-            else
-            {
-                // now allow reverse
-                throttleInput = vertical; // negative value
-                brakeInput = 0f;
-            }
-        }
-        else
-        {
-            throttleInput = 0f;
-            brakeInput = 0f;
-        }
+        isBraking = userInput.y < 0 && forwards ? Mathf.Abs(userInput.y) : 0f;
 
+        // Reset car
         if (Input.GetKeyDown(KeyCode.R))
-            ResetCar();
+        {
+            float yrotation = transform.rotation.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0, yrotation, 0);
+            transform.position += Vector3.up * 2f;
+            rb.velocity = transform.forward * 5f;
+            rb.angularVelocity = Vector3.zero;
+        }
 
-        UpdateWheelMeshes();
+        // Manual gear keys still work
+        if (Input.GetKeyDown(KeyCode.E)) e.UpGear(this);
+        else if (Input.GetKeyDown(KeyCode.D)) e.DownGear(this);
+
+        e.checkGearSwitching(this, throttleInput);
     }
 
     void FixedUpdate()
     {
-        CalculateEngineRPM();
-        HandleAutomaticGears();
-        ApplyMotor();
-        ApplySteering();
-        ApplyBrakes();
-        ApplyDrag();
+        ApplyAerodynamicDrag();
+
+        float averageWheelAngularVelocity = 0f;
+        foreach (var w in wheels)
+        {
+            averageWheelAngularVelocity += w.angularVelocity;
+        }
+
+        averageWheelAngularVelocity /= wheels.Length;
+        e.SetRPM(averageWheelAngularVelocity);
     }
 
-    // ================= ENGINE =================
-
-    void CalculateEngineRPM()
+    private void ApplyAerodynamicDrag()
     {
-        float wheelRPM = (wheelRL.rpm + wheelRR.rpm) * 0.5f;
-        float gearRatio = gearRatios[Mathf.Clamp(currentGear - 1, 0, gearRatios.Length - 1)];
+        Vector3 velocity = rb.velocity;
+        float speed = velocity.magnitude;
 
-        currentRPM = Mathf.Abs(wheelRPM * gearRatio * finalDriveRatio);
-        currentRPM = Mathf.Clamp(currentRPM, idleRPM, maxRPM);
-    }
+        float currentDragCoeff = dragCoefficient;
+        float dragMagnitude = 0.5f * airDensity * speed * speed * currentDragCoeff * frontalArea;
 
-    float GetEngineTorque()
-    {
-        float normalizedRPM = currentRPM / maxRPM;
-        float torqueFactor = torqueCurve.Evaluate(normalizedRPM);
-        return maxTorque * torqueFactor * throttleInput; // negative allowed
-    }
-
-    // ================= GEARS =================
-
-    void HandleAutomaticGears()
-    {
-        if (currentGear < gearRatios.Length && currentRPM > shiftUpRPM)
-            currentGear++;
-        else if (currentGear > 1 && currentRPM < shiftDownRPM)
-            currentGear--;
-    }
-
-    // ================= MOTOR =================
-
-    void ApplyMotor()
-    {
-        float engineTorque = GetEngineTorque();
-        float gearRatio = gearRatios[Mathf.Clamp(currentGear - 1, 0, gearRatios.Length - 1)];
-
-        float wheelTorque = engineTorque * gearRatio * finalDriveRatio * drivetrainEfficiency;
-        wheelTorque = Mathf.Clamp(wheelTorque, -6000f, 8000f);
-
-        wheelRL.motorTorque = wheelTorque;
-        wheelRR.motorTorque = wheelTorque;
-    }
-
-    // ================= STEERING =================
-
-    void ApplySteering()
-    {
-        float steer = steerInput * maxSteerAngle;
-        wheelFL.steerAngle = steer;
-        wheelFR.steerAngle = steer;
-    }
-
-    // ================= BRAKES =================
-
-    void ApplyBrakes()
-    {
-        float brake = brakeInput * brakeForce;
-        float handbrake = handbrakeInput * handbrakeForce;
-
-        wheelFL.brakeTorque = brake;
-        wheelFR.brakeTorque = brake;
-        wheelRL.brakeTorque = brake + handbrake;
-        wheelRR.brakeTorque = brake + handbrake;
-    }
-
-    // ================= DRAG =================
-
-    void ApplyDrag()
-    {
-        if (rb.linearVelocity.magnitude < 0.1f) return;
-
-        float airDensity = 1.225f;
-        float dragForce = 0.5f * airDensity * aerodynamicDrag * frontalArea * rb.linearVelocity.sqrMagnitude;
-
-        Vector3 drag = -rb.linearVelocity.normalized * dragForce;
-        rb.AddForce(drag);
-
-        Vector3 rolling = -rb.linearVelocity.normalized * rollingResistance;
-        rb.AddForce(rolling);
-    }
-
-    // ================= RESET =================
-
-    void ResetCar()
-    {
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-
-        Vector3 euler = transform.eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
-        transform.position += Vector3.up * resetLift;
-    }
-
-    // ================= VISUALS =================
-
-    void UpdateWheelMeshes()
-    {
-        UpdateWheel(wheelFL, meshFL, false);
-        UpdateWheel(wheelFR, meshFR, false);
-        UpdateWheel(wheelRL, meshRL, true);
-        UpdateWheel(wheelRR, meshRR, true);
-    }
-
-    void UpdateWheel(WheelCollider col, Transform mesh, bool isRear)
-    {
-        if (col == null || mesh == null) return;
-
-        Vector3 pos;
-        Quaternion rot;
-        col.GetWorldPose(out pos, out rot);
-
-        if (isRear && flipRearWheels)
-            rot *= Quaternion.Euler(0f, 180f, 0f);
-
-        mesh.position = pos;
-        mesh.rotation = rot;
+        Vector3 dragForce = -velocity.normalized * dragMagnitude;
+        rb.AddForce(dragForce / 200f, ForceMode.Force);
     }
 }
