@@ -1,11 +1,5 @@
 using UnityEngine;
 
-// 🔥 ULTRA REALISTIC CAR CONTROLLER (UPDATED — FIXED reverse for real)
-// Controls:
-//   W / Up → forward
-//   S / Down → brake then reverse
-//   R → reset car
-
 [RequireComponent(typeof(Rigidbody))]
 public class car : MonoBehaviour
 {
@@ -13,20 +7,29 @@ public class car : MonoBehaviour
     public float engineCC = 3000f;
     public float maxRPM = 7500f;
     public float idleRPM = 800f;
-    public float maxTorque = 500f;
+    public float maxTorque = 520f;
     public AnimationCurve torqueCurve;
+
+    [Header("=== SHIFT STABILITY ===")]
+    public float minGearHoldTime = 1.0f; // 🔥 key fix
+    public float rpmSmoothing = 5f;
+
+    private float smoothedRPM;
+    private float gearEnterTime;
+
 
     [Header("=== TRANSMISSION ===")]
     public float[] gearRatios = { 3.8f, 2.4f, 1.7f, 1.25f, 1.0f, 0.82f };
-    public float finalDriveRatio = 3.73f;
-    public float drivetrainEfficiency = 0.85f;
-    public float shiftUpRPM = 7200f;
-    public float shiftDownRPM = 2500f;
+    public float finalDriveRatio = 3.9f; // 🔥 slightly shorter for better pickup
+    public float drivetrainEfficiency = 0.9f;
+    public float shiftUpRPM = 7100f;
+    public float shiftDownRPM = 2600f;
+    public float shiftDelay = 0.35f; // 🔥 prevents gear skipping
 
     [Header("=== SPEED & DRAG ===")]
-    public float aerodynamicDrag = 0.32f;
+    public float aerodynamicDrag = 0.30f;
     public float frontalArea = 2.2f;
-    public float rollingResistance = 8f;
+    public float rollingResistance = 6f;
 
     [Header("=== WHEELS ===")]
     public WheelCollider wheelFL;
@@ -58,10 +61,11 @@ public class car : MonoBehaviour
     public float speedKmh;
 
     private Rigidbody rb;
-    private float throttleInput; // can be negative
+    private float throttleInput;
     private float brakeInput;
     private float steerInput;
     private float handbrakeInput;
+    private float lastShiftTime;
 
     void Start()
     {
@@ -73,10 +77,10 @@ public class car : MonoBehaviour
         if (torqueCurve.length == 0)
         {
             torqueCurve = new AnimationCurve(
-                new Keyframe(0f, 0.7f),
-                new Keyframe(0.25f, 1f),
-                new Keyframe(0.6f, 0.95f),
-                new Keyframe(1f, 0.75f)
+                new Keyframe(0f, 0.8f),
+                new Keyframe(0.3f, 1.0f),
+                new Keyframe(0.65f, 0.95f),
+                new Keyframe(1f, 0.7f)
             );
         }
     }
@@ -89,28 +93,24 @@ public class car : MonoBehaviour
 
         speedKmh = rb.linearVelocity.magnitude * 3.6f;
 
-        // 🔥 MUCH MORE RELIABLE BRAKE/REVERSE LOGIC
+        // forward / brake / reverse logic
         if (vertical > 0.05f)
         {
-            // forward
             throttleInput = vertical;
             brakeInput = 0f;
         }
         else if (vertical < -0.05f)
         {
-            // check if car is moving forward in local space
             float localZ = transform.InverseTransformDirection(rb.linearVelocity).z;
 
             if (localZ > 1f)
             {
-                // still rolling forward → brake first
                 throttleInput = 0f;
                 brakeInput = 1f;
             }
             else
             {
-                // now allow reverse
-                throttleInput = vertical; // negative value
+                throttleInput = vertical;
                 brakeInput = 0f;
             }
         }
@@ -143,26 +143,71 @@ public class car : MonoBehaviour
         float wheelRPM = (wheelRL.rpm + wheelRR.rpm) * 0.5f;
         float gearRatio = gearRatios[Mathf.Clamp(currentGear - 1, 0, gearRatios.Length - 1)];
 
-        currentRPM = Mathf.Abs(wheelRPM * gearRatio * finalDriveRatio);
-        currentRPM = Mathf.Clamp(currentRPM, idleRPM, maxRPM);
+        float rawRPM = Mathf.Abs(wheelRPM * gearRatio * finalDriveRatio);
+        rawRPM = Mathf.Clamp(rawRPM, idleRPM, maxRPM);
+
+        // 🔥 RPM smoothing (VERY IMPORTANT)
+        smoothedRPM = Mathf.Lerp(smoothedRPM, rawRPM, Time.fixedDeltaTime * rpmSmoothing);
+        currentRPM = smoothedRPM;
     }
+
 
     float GetEngineTorque()
     {
         float normalizedRPM = currentRPM / maxRPM;
         float torqueFactor = torqueCurve.Evaluate(normalizedRPM);
-        return maxTorque * torqueFactor * throttleInput; // negative allowed
+
+        // 🔥 extra low-gear punch
+        float gearBoost = Mathf.Lerp(1.25f, 0.85f, (currentGear - 1f) / (gearRatios.Length - 1f));
+
+        return maxTorque * torqueFactor * throttleInput * gearBoost;
     }
 
     // ================= GEARS =================
 
     void HandleAutomaticGears()
     {
-        if (currentGear < gearRatios.Length && currentRPM > shiftUpRPM)
+        // 🔥 force 1st gear at very low speed
+        if (speedKmh < 5f)
+        {
+            currentGear = 1;
+            gearEnterTime = Time.time;
+            return;
+        }
+
+        // 🔥 must stay in gear for minimum time
+        if (Time.time < gearEnterTime + minGearHoldTime)
+            return;
+
+        // 🔥 global shift delay
+        if (Time.time < lastShiftTime + shiftDelay)
+            return;
+
+        // 🔥 UPSHIFT CONDITIONS (stricter now)
+        bool canUpshift =
+            throttleInput > 0.15f &&
+            currentGear < gearRatios.Length &&
+            currentRPM > shiftUpRPM &&
+            speedKmh > currentGear * 15f; // speed gate
+
+        if (canUpshift)
+        {
             currentGear++;
-        else if (currentGear > 1 && currentRPM < shiftDownRPM)
+            lastShiftTime = Time.time;
+            gearEnterTime = Time.time;
+            return;
+        }
+
+        // 🔥 DOWNSHIFT
+        if (currentGear > 1 && currentRPM < shiftDownRPM)
+        {
             currentGear--;
+            lastShiftTime = Time.time;
+            gearEnterTime = Time.time;
+        }
     }
+
+
 
     // ================= MOTOR =================
 
@@ -172,7 +217,7 @@ public class car : MonoBehaviour
         float gearRatio = gearRatios[Mathf.Clamp(currentGear - 1, 0, gearRatios.Length - 1)];
 
         float wheelTorque = engineTorque * gearRatio * finalDriveRatio * drivetrainEfficiency;
-        wheelTorque = Mathf.Clamp(wheelTorque, -6000f, 8000f);
+        wheelTorque = Mathf.Clamp(wheelTorque, -6500f, 9000f);
 
         wheelRL.motorTorque = wheelTorque;
         wheelRR.motorTorque = wheelTorque;
@@ -209,11 +254,8 @@ public class car : MonoBehaviour
         float airDensity = 1.225f;
         float dragForce = 0.5f * airDensity * aerodynamicDrag * frontalArea * rb.linearVelocity.sqrMagnitude;
 
-        Vector3 drag = -rb.linearVelocity.normalized * dragForce;
-        rb.AddForce(drag);
-
-        Vector3 rolling = -rb.linearVelocity.normalized * rollingResistance;
-        rb.AddForce(rolling);
+        rb.AddForce(-rb.linearVelocity.normalized * dragForce);
+        rb.AddForce(-rb.linearVelocity.normalized * rollingResistance);
     }
 
     // ================= RESET =================
@@ -242,9 +284,7 @@ public class car : MonoBehaviour
     {
         if (col == null || mesh == null) return;
 
-        Vector3 pos;
-        Quaternion rot;
-        col.GetWorldPose(out pos, out rot);
+        col.GetWorldPose(out Vector3 pos, out Quaternion rot);
 
         if (isRear && flipRearWheels)
             rot *= Quaternion.Euler(0f, 180f, 0f);
