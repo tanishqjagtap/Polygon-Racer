@@ -315,8 +315,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1638745177}
-        m_TargetAssemblyTypeName: GarageCarSelector, Assembly-CSharp
+      - m_Target: {fileID: 1679564820}
+        m_TargetAssemblyTypeName: GarageManager, Assembly-CSharp
         m_MethodName: NextCar
         m_Mode: 1
         m_Arguments:
@@ -666,8 +666,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1638745177}
-        m_TargetAssemblyTypeName: GarageCarSelector, Assembly-CSharp
+      - m_Target: {fileID: 1679564820}
+        m_TargetAssemblyTypeName: GarageManager, Assembly-CSharp
         m_MethodName: SelectCar
         m_Mode: 1
         m_Arguments:
@@ -1232,9 +1232,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1638745177}
-        m_TargetAssemblyTypeName: GarageCarSelector, Assembly-CSharp
-        m_MethodName: PrevCar
+      - m_Target: {fileID: 1679564820}
+        m_TargetAssemblyTypeName: GarageManager, Assembly-CSharp
+        m_MethodName: PreviousCar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1534,58 +1534,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
---- !u!1 &1638745176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1638745178}
-  - component: {fileID: 1638745177}
-  m_Layer: 0
-  m_Name: Garage Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1638745177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638745176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d3edf4c8ff9d54eb0ce581cfa2eb5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GarageCarSelector
-  carPoint: {fileID: 1053361250}
-  carPrefabs:
-  - {fileID: 1676695654913498611, guid: e48d45a646d84364ea014c93d6f1f38f, type: 3}
-  - {fileID: 2169021090551189460, guid: d689c62459c1b844d940bfbcf55c25a3, type: 3}
-  - {fileID: 8212792407860874876, guid: c3fc31b9bd678bc48b702ac544618581, type: 3}
-  rotateSpeed: 25
-  targetSize: 3
-  groundOffset: 0.05
---- !u!4 &1638745178
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638745176}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 799.9035, y: 478.3044, z: 125.06428}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648958829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1564,55 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1053361250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1679564819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679564821}
+  - component: {fileID: 1679564820}
+  m_Layer: 0
+  m_Name: GarageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1679564820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679564819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c440c9a92ce4c645bad67edbd885692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GarageManager
+  carPrefabs:
+  - {fileID: 6058199666578282012, guid: 49b8ff95f05fc1040a9a56a0b4560333, type: 3}
+  - {fileID: 4873025690703725806, guid: d068fbbf3e5e8b540a4bd614d32321c7, type: 3}
+  - {fileID: 6214821812439168121, guid: 8749d69cd03b3f64db127dd6bfe27f31, type: 3}
+  carPoint: {fileID: 1053361250}
+--- !u!4 &1679564821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679564819}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.96094, y: 1.33406, z: -0.1395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975568368
 GameObject:
@@ -1870,4 +1867,4 @@ SceneRoots:
   - {fileID: 1053361250}
   - {fileID: 2128154524}
   - {fileID: 143598486}
-  - {fileID: 1638745178}
+  - {fileID: 1679564821}
