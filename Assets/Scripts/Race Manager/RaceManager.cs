@@ -5,12 +5,9 @@ public class RaceManager : MonoBehaviour
 {
     public static RaceManager Instance;
 
-    [Header("Race State")]
-    public bool passedCheckpoint = false;
+    [Header("Checkpoint State")]
+    private bool finishArmed = false;
     private bool raceFinished = false;
-
-    private Vector3 lastCheckpointPos;
-    private Quaternion lastCheckpointRot;
 
     [Header("Countdown Images")]
     public GameObject threeImage;
@@ -23,8 +20,8 @@ public class RaceManager : MonoBehaviour
     public AudioClip tickSound;
     public AudioClip goSound;
 
-    // 🔥 TEMP — no hard dependency
-    private MonoBehaviour playerCar;
+    [Header("Player Reference (AUTO FOUND)")]
+    public Car playerCar;
 
     private void Awake()
     {
@@ -33,11 +30,18 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
-        // 🔥 TEMP: find ANY behaviour on car root
-        playerCar = FindObjectOfType<MonoBehaviour>();
+        StartCoroutine(InitializeRace());
+    }
+
+    IEnumerator InitializeRace()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (playerCar == null)
+            playerCar = FindFirstObjectByType<Car>();
 
         if (playerCar != null)
-            playerCar.enabled = false;
+            playerCar.canDrive = false;
 
         StartCoroutine(StartCountdown());
     }
@@ -46,73 +50,71 @@ public class RaceManager : MonoBehaviour
     {
         // 3
         threeImage.SetActive(true);
-        audioSource.PlayOneShot(tickSound);
+        if (tickSound) audioSource.PlayOneShot(tickSound);
         yield return new WaitForSeconds(1f);
         threeImage.SetActive(false);
 
         // 2
         twoImage.SetActive(true);
-        audioSource.PlayOneShot(tickSound);
+        if (tickSound) audioSource.PlayOneShot(tickSound);
         yield return new WaitForSeconds(1f);
         twoImage.SetActive(false);
 
         // 1
         oneImage.SetActive(true);
-        audioSource.PlayOneShot(tickSound);
+        if (tickSound) audioSource.PlayOneShot(tickSound);
         yield return new WaitForSeconds(1f);
         oneImage.SetActive(false);
 
         // GO
         goImage.SetActive(true);
-        audioSource.PlayOneShot(goSound);
+        if (goSound) audioSource.PlayOneShot(goSound);
 
-        // Unlock car
         if (playerCar != null)
-            playerCar.enabled = true;
+            playerCar.canDrive = true;
 
         yield return new WaitForSeconds(1f);
         goImage.SetActive(false);
     }
 
-    public void SetCheckpoint(Transform checkpoint)
-    {
-        lastCheckpointPos = checkpoint.position;
-        lastCheckpointRot = checkpoint.rotation;
-        passedCheckpoint = true;
-    }
-
-    public void ResetToCheckpoint(GameObject car)
-    {
-        if (!passedCheckpoint || raceFinished) return;
-
-        Rigidbody rb = car.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-
-        car.transform.position = lastCheckpointPos + Vector3.up * 0.5f;
-        car.transform.rotation = lastCheckpointRot;
-    }
-
-    public void FinishRace(GameObject car)
+    // ✅ called by middle checkpoint
+    public void ArmFinish()
     {
         if (raceFinished) return;
+
+        finishArmed = true;
+        Debug.Log("Finish armed");
+    }
+
+    // ✅ called by finish line
+    public void FinishRace()
+    {
+        if (raceFinished) return;
+        if (!finishArmed) return; // 🚨 IMPORTANT
+
         raceFinished = true;
 
         Debug.Log("RACE FINISHED!");
 
-        // 🔥 TEMP SAFE DISABLE
-        var controller = car.GetComponent<MonoBehaviour>();
-        if (controller != null)
-            controller.enabled = false;
+        StartCoroutine(SlowStopCar());
+    }
 
-        Rigidbody rb = car.GetComponent<Rigidbody>();
-        if (rb != null)
+    IEnumerator SlowStopCar()
+    {
+        if (playerCar == null) yield break;
+
+        Rigidbody rb = playerCar.GetComponent<Rigidbody>();
+
+        // smooth natural slowdown
+        float t = 0f;
+        while (rb.linearVelocity.magnitude > 0.5f && t < 4f)
         {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            rb.linearVelocity *= 0.96f;
+            yield return new WaitForFixedUpdate();
+            t += Time.fixedDeltaTime;
         }
+
+        rb.linearVelocity = Vector3.zero;
+        playerCar.canDrive = false;
     }
 }

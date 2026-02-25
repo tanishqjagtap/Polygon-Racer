@@ -1,8 +1,15 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class car : MonoBehaviour
+public class Car : MonoBehaviour
 {
+    // 🔥 Controlled by RaceManager
+    public bool canDrive = false;
+
+    [Header("=== AUTO STOP (FINISH) ===")]
+    public bool autoStop = false;
+    public float autoBrakeForce = 2500f;
+
     [Header("=== ENGINE SPECS ===")]
     public float engineCC = 3000f;
     public float maxRPM = 7500f;
@@ -11,20 +18,19 @@ public class car : MonoBehaviour
     public AnimationCurve torqueCurve;
 
     [Header("=== SHIFT STABILITY ===")]
-    public float minGearHoldTime = 1.0f; // 🔥 key fix
+    public float minGearHoldTime = 1.0f;
     public float rpmSmoothing = 5f;
 
     private float smoothedRPM;
     private float gearEnterTime;
 
-
     [Header("=== TRANSMISSION ===")]
     public float[] gearRatios = { 3.8f, 2.4f, 1.7f, 1.25f, 1.0f, 0.82f };
-    public float finalDriveRatio = 3.9f; // 🔥 slightly shorter for better pickup
+    public float finalDriveRatio = 3.9f;
     public float drivetrainEfficiency = 0.9f;
     public float shiftUpRPM = 7100f;
     public float shiftDownRPM = 2600f;
-    public float shiftDelay = 0.35f; // 🔥 prevents gear skipping
+    public float shiftDelay = 0.35f;
 
     [Header("=== SPEED & DRAG ===")]
     public float aerodynamicDrag = 0.30f;
@@ -70,6 +76,7 @@ public class car : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         rb.centerOfMass = transform.Find("centre of mass") != null
             ? transform.Find("centre of mass").localPosition
             : new Vector3(0, -0.45f, 0);
@@ -87,13 +94,25 @@ public class car : MonoBehaviour
 
     void Update()
     {
+        // 🚨 LOCKED DURING COUNTDOWN OR FINISH
+        if (!canDrive)
+        {
+            throttleInput = 0f;
+            brakeInput = 0f;
+            steerInput = 0f;
+            handbrakeInput = 0f;
+
+            speedKmh = rb.linearVelocity.magnitude * 3.6f;
+            UpdateWheelMeshes();
+            return;
+        }
+
         float vertical = Input.GetAxis("Vertical");
         steerInput = Input.GetAxis("Horizontal");
         handbrakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
 
         speedKmh = rb.linearVelocity.magnitude * 3.6f;
 
-        // forward / brake / reverse logic
         if (vertical > 0.05f)
         {
             throttleInput = vertical;
@@ -146,18 +165,14 @@ public class car : MonoBehaviour
         float rawRPM = Mathf.Abs(wheelRPM * gearRatio * finalDriveRatio);
         rawRPM = Mathf.Clamp(rawRPM, idleRPM, maxRPM);
 
-        // 🔥 RPM smoothing (VERY IMPORTANT)
         smoothedRPM = Mathf.Lerp(smoothedRPM, rawRPM, Time.fixedDeltaTime * rpmSmoothing);
         currentRPM = smoothedRPM;
     }
-
 
     float GetEngineTorque()
     {
         float normalizedRPM = currentRPM / maxRPM;
         float torqueFactor = torqueCurve.Evaluate(normalizedRPM);
-
-        // 🔥 extra low-gear punch
         float gearBoost = Mathf.Lerp(1.25f, 0.85f, (currentGear - 1f) / (gearRatios.Length - 1f));
 
         return maxTorque * torqueFactor * throttleInput * gearBoost;
@@ -167,7 +182,6 @@ public class car : MonoBehaviour
 
     void HandleAutomaticGears()
     {
-        // 🔥 force 1st gear at very low speed
         if (speedKmh < 5f)
         {
             currentGear = 1;
@@ -175,20 +189,14 @@ public class car : MonoBehaviour
             return;
         }
 
-        // 🔥 must stay in gear for minimum time
-        if (Time.time < gearEnterTime + minGearHoldTime)
-            return;
+        if (Time.time < gearEnterTime + minGearHoldTime) return;
+        if (Time.time < lastShiftTime + shiftDelay) return;
 
-        // 🔥 global shift delay
-        if (Time.time < lastShiftTime + shiftDelay)
-            return;
-
-        // 🔥 UPSHIFT CONDITIONS (stricter now)
         bool canUpshift =
             throttleInput > 0.15f &&
             currentGear < gearRatios.Length &&
             currentRPM > shiftUpRPM &&
-            speedKmh > currentGear * 15f; // speed gate
+            speedKmh > currentGear * 15f;
 
         if (canUpshift)
         {
@@ -198,7 +206,6 @@ public class car : MonoBehaviour
             return;
         }
 
-        // 🔥 DOWNSHIFT
         if (currentGear > 1 && currentRPM < shiftDownRPM)
         {
             currentGear--;
@@ -206,8 +213,6 @@ public class car : MonoBehaviour
             gearEnterTime = Time.time;
         }
     }
-
-
 
     // ================= MOTOR =================
 
@@ -232,12 +237,19 @@ public class car : MonoBehaviour
         wheelFR.steerAngle = steer;
     }
 
-    // ================= BRAKES =================
+    // ================= BRAKES (🔥 UPGRADED) =================
 
     void ApplyBrakes()
     {
         float brake = brakeInput * brakeForce;
         float handbrake = handbrakeInput * handbrakeForce;
+
+        // 🔥 smooth stop after finish
+        if (autoStop)
+        {
+            brake = autoBrakeForce;
+            throttleInput = 0f;
+        }
 
         wheelFL.brakeTorque = brake;
         wheelFR.brakeTorque = brake;

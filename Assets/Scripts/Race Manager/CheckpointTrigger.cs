@@ -4,10 +4,9 @@ public class CheckpointTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            RaceManager.Instance.SetCheckpoint(transform);
-            Debug.Log("Checkpoint Reached!");
-        }
+        if (!other.CompareTag("Player")) return;
+
+        RaceManager.Instance.ArmFinish();
+        Debug.Log("Checkpoint passed — finish armed");
     }
 }
