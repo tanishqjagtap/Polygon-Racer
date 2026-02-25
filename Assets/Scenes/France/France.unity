@@ -4163,12 +4163,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarCameraFollowNFS
   target: {fileID: 0}
-  height: 4.13
-  distance: 6.5
-  sideOffset: 0
+  height: 1.1
+  distance: 7.38
+  sideOffset: 0.33
   positionSmooth: 0.1
   yawFollowSpeed: 2.5
-  lookOffset: {x: 0, y: 1.5, z: 0.5}
+  lookOffset: {x: 0, y: 1.83, z: 0.25}
   fov: 66
 --- !u!114 &801489803
 MonoBehaviour:
@@ -6964,10 +6964,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaceManager
   passedCheckpoint: 0
-  threeImage: {fileID: 0}
-  twoImage: {fileID: 0}
-  oneImage: {fileID: 0}
-  goImage: {fileID: 0}
+  threeImage: {fileID: 235048075}
+  twoImage: {fileID: 1898537502}
+  oneImage: {fileID: 112736563}
+  goImage: {fileID: 1739070150}
   audioSource: {fileID: 0}
   tickSound: {fileID: 0}
   goSound: {fileID: 0}
@@ -9444,6 +9444,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4509741636474450192, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
+--- !u!1 &1959893355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -9126883537104930206, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
+  m_PrefabInstance: {fileID: 2024716567}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1959893359
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959893355}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 294322835836684071, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
 --- !u!1 &1964458228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1341544385874468109, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
@@ -11914,6 +11941,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8571332501369465804, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 613693163}
+    - targetCorrespondingSourceObject: {fileID: -9126883537104930206, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1959893359}
     - targetCorrespondingSourceObject: {fileID: 8089095595534241944, guid: 9d4609008362bd44a9e30dad19e59e7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2024716573}

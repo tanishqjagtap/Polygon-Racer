@@ -51,11 +51,9 @@
     <Compile Include="Assets\Scripts\CarCameraFollowNFS.cs" />
     <Compile Include="Assets\Scripts\FinalCarController.cs" />
     <Compile Include="Assets\Scripts\Race Manager\FinishLineTrigger.cs" />
-    <Compile Include="Assets\Scripts\Garage\CarSelection.cs" />
     <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
-    <Compile Include="Assets\Scripts\Garage\RaceCarSpawner.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CheckpointTrigger.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CountdownManager.cs" />
     <Compile Include="Assets\Scripts\GarageCarSelector.cs" />
@@ -66,7 +64,6 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\CarDisplaySettings.cs" />
     <Compile Include="Assets\Scripts\IntroUI.cs" />
-    <Compile Include="Assets\Scripts\Garage\GarageManager.cs" />
     <Compile Include="Assets\Testing\Car.cs" />
     <Compile Include="Assets\Scripts\SpeedometerUi.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />

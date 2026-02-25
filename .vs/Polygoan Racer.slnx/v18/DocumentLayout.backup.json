@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\garage\\garagemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Garage\\CarSelection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Garage\\CarSelection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\garage\\racecarspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\garage\\racecarspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\testing\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\testing\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Race Manager\\RaceManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\garage\\carselection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\garage\\carselection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,14 +40,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Garage\\GarageManager.cs",
               "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Garage\\GarageManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Garage\\GarageManager.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wDYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwCsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-21T12:46:12.392Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "RaceCarSpawner.cs",
               "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Garage\\RaceCarSpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Garage\\RaceCarSpawner.cs",
@@ -51,12 +55,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Garage\\RaceCarSpawner.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T12:20:53.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-21T12:20:53.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Car.cs",
               "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\Car.cs",
               "RelativeDocumentMoniker": "Assets\\Testing\\Car.cs",
@@ -64,12 +67,11 @@
               "RelativeToolTip": "Assets\\Testing\\Car.cs",
               "ViewState": "AgIAAKAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T14:51:37.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-17T14:51:37.664Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CarSelection.cs",
               "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Garage\\CarSelection.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Garage\\CarSelection.cs",
@@ -77,7 +79,19 @@
               "RelativeToolTip": "Assets\\Scripts\\Garage\\CarSelection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T12:20:08.168Z",
+              "WhenOpened": "2026-02-21T12:20:08.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RaceManager.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T09:09:42.81Z",
               "EditorCaption": ""
             }
           ]

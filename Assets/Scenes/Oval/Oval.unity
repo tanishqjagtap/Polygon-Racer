@@ -6675,8 +6675,8 @@ MonoBehaviour:
   oneImage: {fileID: 1362402186}
   goImage: {fileID: 1333947141}
   audioSource: {fileID: 0}
-  tickSound: {fileID: 8300000, guid: 1ed3731772cfea04bbc9e66c9cdf716a, type: 3}
-  goSound: {fileID: 8300000, guid: 76145217b9652164da34e732f040a9bd, type: 3}
+  tickSound: {fileID: 0}
+  goSound: {fileID: 0}
 --- !u!136 &901572102
 CapsuleCollider:
   m_ObjectHideFlags: 0
