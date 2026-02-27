@@ -1196,6 +1196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699095650}
   - component: {fileID: 699095649}
+  - component: {fileID: 699095651}
   m_Layer: 0
   m_Name: FinishLine
   m_TagString: Untagged
@@ -1239,6 +1240,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1021847939}
   m_LocalEulerAnglesHint: {x: 0, y: -22.541, z: 0}
+--- !u!114 &699095651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699095648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1948692cd6b6a624f8010f5d9fd9b3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FinishLineTrigger
 --- !u!1 &722059294 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7049503130806055465, guid: ff1ea0c7d9bbbc249872375e11f38026, type: 3}
@@ -1569,6 +1582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007512659}
   - component: {fileID: 1007512658}
+  - component: {fileID: 1007512660}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -1588,14 +1602,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cda74a579268c540b8289203a9c2d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaceManager
-  passedCheckpoint: 0
   threeImage: {fileID: 1322340460}
   twoImage: {fileID: 1298657723}
   oneImage: {fileID: 298604}
   goImage: {fileID: 2094469930}
-  audioSource: {fileID: 0}
-  tickSound: {fileID: 0}
-  goSound: {fileID: 0}
+  audioSource: {fileID: 1007512660}
+  tickSound: {fileID: 8300000, guid: 1ed3731772cfea04bbc9e66c9cdf716a, type: 3}
+  goSound: {fileID: 8300000, guid: 76145217b9652164da34e732f040a9bd, type: 3}
+  playerCar: {fileID: 0}
 --- !u!4 &1007512659
 Transform:
   m_ObjectHideFlags: 0
@@ -1611,6 +1625,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1007512660
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007512657}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1021847939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ff1ea0c7d9bbbc249872375e11f38026, type: 3}
@@ -1817,8 +1928,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1279431119}
-  - component: {fileID: 1279431118}
   - component: {fileID: 1279431117}
+  - component: {fileID: 1279431120}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -1847,18 +1958,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 41.477253, y: 12.737514, z: 1}
   m_Center: {x: 5.7324963, y: 5.868756, z: 0}
---- !u!114 &1279431118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279431116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f5d5550709fac84fb3e5ad4368e6c9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
 --- !u!4 &1279431119
 Transform:
   m_ObjectHideFlags: 0
@@ -1874,6 +1973,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1021847939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1279431120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279431116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5d5550709fac84fb3e5ad4368e6c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
 --- !u!1 &1298657723
 GameObject:
   m_ObjectHideFlags: 0
