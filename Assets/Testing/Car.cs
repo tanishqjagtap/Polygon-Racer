@@ -61,6 +61,14 @@ public class Car : MonoBehaviour
     public float brakeForce = 4000f;
     public float handbrakeForce = 8000f;
 
+    // 🔥 AUDIO
+    [Header("=== AUDIO ===")]
+    public AudioSource engineAudio;
+    public AudioSource shiftAudio;
+    public AudioClip shiftClip;
+    public float minPitch = 0.8f;
+    public float maxPitch = 2.2f;
+
     [Header("=== RUNTIME (READ ONLY) ===")]
     public float currentRPM;
     public int currentGear = 1;
@@ -104,6 +112,7 @@ public class Car : MonoBehaviour
 
             speedKmh = rb.linearVelocity.magnitude * 3.6f;
             UpdateWheelMeshes();
+            UpdateEngineSound();
             return;
         }
 
@@ -143,6 +152,7 @@ public class Car : MonoBehaviour
             ResetCar();
 
         UpdateWheelMeshes();
+        UpdateEngineSound(); // 🔥 AUDIO UPDATE
     }
 
     void FixedUpdate()
@@ -201,6 +211,7 @@ public class Car : MonoBehaviour
         if (canUpshift)
         {
             currentGear++;
+            PlayUpshift();
             lastShiftTime = Time.time;
             gearEnterTime = Time.time;
             return;
@@ -209,9 +220,39 @@ public class Car : MonoBehaviour
         if (currentGear > 1 && currentRPM < shiftDownRPM)
         {
             currentGear--;
+            PlayDownshift();
             lastShiftTime = Time.time;
             gearEnterTime = Time.time;
         }
+    }
+
+    // ================= AUDIO =================
+
+    void UpdateEngineSound()
+    {
+        if (engineAudio == null) return;
+
+        float rpmPercent = Mathf.InverseLerp(idleRPM, maxRPM, currentRPM);
+        engineAudio.pitch = Mathf.Lerp(minPitch, maxPitch, rpmPercent);
+
+        float gearPercent = (float)currentGear / gearRatios.Length;
+        engineAudio.volume = Mathf.Lerp(0.35f, 0.8f, gearPercent);
+    }
+
+    void PlayUpshift()
+    {
+        if (shiftAudio == null || shiftClip == null) return;
+
+        shiftAudio.pitch = 1f;
+        shiftAudio.PlayOneShot(shiftClip);
+    }
+
+    void PlayDownshift()
+    {
+        if (shiftAudio == null || shiftClip == null) return;
+
+        shiftAudio.pitch = 0.75f;
+        shiftAudio.PlayOneShot(shiftClip);
     }
 
     // ================= MOTOR =================
@@ -237,14 +278,13 @@ public class Car : MonoBehaviour
         wheelFR.steerAngle = steer;
     }
 
-    // ================= BRAKES (🔥 UPGRADED) =================
+    // ================= BRAKES =================
 
     void ApplyBrakes()
     {
         float brake = brakeInput * brakeForce;
         float handbrake = handbrakeInput * handbrakeForce;
 
-        // 🔥 smooth stop after finish
         if (autoStop)
         {
             brake = autoBrakeForce;

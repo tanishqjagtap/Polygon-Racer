@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\UNITY PROJECTS\\Polygoan Racer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\finishlinetrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\finishlinetrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CheckpointTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Race Manager\\CheckpointTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\unity projects\\polygoan racer\\assets\\scripts\\race manager\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\race manager\\racemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,32 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "FinishLineTrigger.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\FinishLineTrigger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T09:19:17.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Car.cs",
               "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\Car.cs",
               "RelativeDocumentMoniker": "Assets\\Testing\\Car.cs",
               "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Testing\\Car.cs",
               "RelativeToolTip": "Assets\\Testing\\Car.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAgwDIBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-17T14:51:37.664Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "RaceManager.cs",
               "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
               "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\RaceManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Race Manager\\RaceManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAgwHcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-23T09:09:42.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CheckpointTrigger.cs",
+              "DocumentMoniker": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CheckpointTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Race Manager\\CheckpointTrigger.cs",
+              "ToolTip": "C:\\UNITY PROJECTS\\Polygoan Racer\\Assets\\Scripts\\Race Manager\\CheckpointTrigger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Race Manager\\CheckpointTrigger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T09:16:54.07Z",
               "EditorCaption": ""
             }
           ]
