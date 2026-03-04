@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CarCameraFollowNFS.cs" />
     <Compile Include="Assets\Scripts\FinalCarController.cs" />
+    <Compile Include="Assets\Scripts\Race Manager\AICarController.cs" />
     <Compile Include="Assets\Scripts\Race Manager\FinishLineTrigger.cs" />
     <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />

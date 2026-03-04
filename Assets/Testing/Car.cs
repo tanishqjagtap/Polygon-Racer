@@ -61,7 +61,6 @@ public class Car : MonoBehaviour
     public float brakeForce = 4000f;
     public float handbrakeForce = 8000f;
 
-    // 🔥 AUDIO
     [Header("=== AUDIO ===")]
     public AudioSource engineAudio;
     public AudioSource shiftAudio;
@@ -75,9 +74,12 @@ public class Car : MonoBehaviour
     public float speedKmh;
 
     private Rigidbody rb;
-    private float throttleInput;
-    private float brakeInput;
-    private float steerInput;
+
+    // 🔥 AI + PLAYER CONTROL VARIABLES
+    [HideInInspector] public float throttleInput;
+    [HideInInspector] public float brakeInput;
+    [HideInInspector] public float steerInput;
+
     private float handbrakeInput;
     private float lastShiftTime;
 
@@ -102,7 +104,6 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        // 🚨 LOCKED DURING COUNTDOWN OR FINISH
         if (!canDrive)
         {
             throttleInput = 0f;
@@ -116,43 +117,47 @@ public class Car : MonoBehaviour
             return;
         }
 
-        float vertical = Input.GetAxis("Vertical");
-        steerInput = Input.GetAxis("Horizontal");
-        handbrakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
-
-        speedKmh = rb.linearVelocity.magnitude * 3.6f;
-
-        if (vertical > 0.05f)
+        // PLAYER INPUT ONLY IF TAGGED PLAYER
+        if (CompareTag("Player"))
         {
-            throttleInput = vertical;
-            brakeInput = 0f;
-        }
-        else if (vertical < -0.05f)
-        {
-            float localZ = transform.InverseTransformDirection(rb.linearVelocity).z;
+            float vertical = Input.GetAxis("Vertical");
+            steerInput = Input.GetAxis("Horizontal");
+            handbrakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
 
-            if (localZ > 1f)
-            {
-                throttleInput = 0f;
-                brakeInput = 1f;
-            }
-            else
+            if (vertical > 0.05f)
             {
                 throttleInput = vertical;
                 brakeInput = 0f;
             }
+            else if (vertical < -0.05f)
+            {
+                float localZ = transform.InverseTransformDirection(rb.linearVelocity).z;
+
+                if (localZ > 1f)
+                {
+                    throttleInput = 0f;
+                    brakeInput = 1f;
+                }
+                else
+                {
+                    throttleInput = vertical;
+                    brakeInput = 0f;
+                }
+            }
+            else
+            {
+                throttleInput = 0f;
+                brakeInput = 0f;
+            }
         }
-        else
-        {
-            throttleInput = 0f;
-            brakeInput = 0f;
-        }
+
+        speedKmh = rb.linearVelocity.magnitude * 3.6f;
 
         if (Input.GetKeyDown(KeyCode.R))
             ResetCar();
 
         UpdateWheelMeshes();
-        UpdateEngineSound(); // 🔥 AUDIO UPDATE
+        UpdateEngineSound();
     }
 
     void FixedUpdate()
@@ -164,8 +169,6 @@ public class Car : MonoBehaviour
         ApplyBrakes();
         ApplyDrag();
     }
-
-    // ================= ENGINE =================
 
     void CalculateEngineRPM()
     {
@@ -187,8 +190,6 @@ public class Car : MonoBehaviour
 
         return maxTorque * torqueFactor * throttleInput * gearBoost;
     }
-
-    // ================= GEARS =================
 
     void HandleAutomaticGears()
     {
@@ -226,8 +227,6 @@ public class Car : MonoBehaviour
         }
     }
 
-    // ================= AUDIO =================
-
     void UpdateEngineSound()
     {
         if (engineAudio == null) return;
@@ -242,7 +241,6 @@ public class Car : MonoBehaviour
     void PlayUpshift()
     {
         if (shiftAudio == null || shiftClip == null) return;
-
         shiftAudio.pitch = 1f;
         shiftAudio.PlayOneShot(shiftClip);
     }
@@ -250,12 +248,9 @@ public class Car : MonoBehaviour
     void PlayDownshift()
     {
         if (shiftAudio == null || shiftClip == null) return;
-
         shiftAudio.pitch = 0.75f;
         shiftAudio.PlayOneShot(shiftClip);
     }
-
-    // ================= MOTOR =================
 
     void ApplyMotor()
     {
@@ -269,16 +264,12 @@ public class Car : MonoBehaviour
         wheelRR.motorTorque = wheelTorque;
     }
 
-    // ================= STEERING =================
-
     void ApplySteering()
     {
         float steer = steerInput * maxSteerAngle;
         wheelFL.steerAngle = steer;
         wheelFR.steerAngle = steer;
     }
-
-    // ================= BRAKES =================
 
     void ApplyBrakes()
     {
@@ -297,8 +288,6 @@ public class Car : MonoBehaviour
         wheelRR.brakeTorque = brake + handbrake;
     }
 
-    // ================= DRAG =================
-
     void ApplyDrag()
     {
         if (rb.linearVelocity.magnitude < 0.1f) return;
@@ -310,8 +299,6 @@ public class Car : MonoBehaviour
         rb.AddForce(-rb.linearVelocity.normalized * rollingResistance);
     }
 
-    // ================= RESET =================
-
     void ResetCar()
     {
         rb.linearVelocity = Vector3.zero;
@@ -321,8 +308,6 @@ public class Car : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
         transform.position += Vector3.up * resetLift;
     }
-
-    // ================= VISUALS =================
 
     void UpdateWheelMeshes()
     {
