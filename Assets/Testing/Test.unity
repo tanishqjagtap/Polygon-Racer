@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 65949740}
   - component: {fileID: 65949739}
   - component: {fileID: 65949738}
+  - component: {fileID: 65949743}
   m_Layer: 0
   m_Name: Chrevolet
   m_TagString: Untagged
@@ -264,6 +265,82 @@ Transform:
   - {fileID: 1432399030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &65949743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65949737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fccf15160ef4c6e4ca55f20755f67020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Car
+  canDrive: 1
+  autoStop: 0
+  autoBrakeForce: 2500
+  engineCC: 3000
+  maxRPM: 7500
+  idleRPM: 800
+  maxTorque: 520
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minGearHoldTime: 1
+  rpmSmoothing: 5
+  gearRatios:
+  - 3.8
+  - 2.4
+  - 1.7
+  - 1.25
+  - 1
+  - 0.82
+  finalDriveRatio: 3.9
+  drivetrainEfficiency: 0.9
+  shiftUpRPM: 7100
+  shiftDownRPM: 2600
+  shiftDelay: 0.35
+  aerodynamicDrag: 0.3
+  frontalArea: 2.2
+  rollingResistance: 6
+  wheelFL: {fileID: 1535387300}
+  wheelFR: {fileID: 706364626}
+  wheelRL: {fileID: 1432399031}
+  wheelRR: {fileID: 1508943776}
+  meshFL: {fileID: 1306007934}
+  meshFR: {fileID: 110492155}
+  meshRL: {fileID: 229040691}
+  meshRR: {fileID: 1591681491}
+  flipRearWheels: 1
+  resetLift: 1.2
+  maxSteerAngle: 30
+  brakeForce: 4000
+  handbrakeForce: 8000
+  engineAudio: {fileID: 0}
+  shiftAudio: {fileID: 0}
+  shiftClip: {fileID: 0}
+  minPitch: 0.8
+  maxPitch: 2.2
+  currentRPM: 0
+  currentGear: 1
+  speedKmh: 0
+  throttleInput: 0
+  brakeInput: 0
+  steerInput: 0
+--- !u!4 &110492155 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2892846320515636592, guid: 4a29a53087870274b8aa886a44123f1c, type: 3}
+  m_PrefabInstance: {fileID: 2094131473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &229040691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8422815983658524300, guid: 4a29a53087870274b8aa886a44123f1c, type: 3}
+  m_PrefabInstance: {fileID: 2094131473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &367920250
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +539,11 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!4 &1306007934 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4649218192157829040, guid: 4a29a53087870274b8aa886a44123f1c, type: 3}
+  m_PrefabInstance: {fileID: 2094131473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1432399029
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +757,11 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!4 &1591681491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1652983296124883986, guid: 4a29a53087870274b8aa886a44123f1c, type: 3}
+  m_PrefabInstance: {fileID: 2094131473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730868796
 GameObject:
   m_ObjectHideFlags: 0
