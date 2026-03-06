@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CarCameraFollowNFS.cs" />
+    <Compile Include="Assets\Scripts\opponent\EnemyCarAI.cs" />
     <Compile Include="Assets\Scripts\FinalCarController.cs" />
     <Compile Include="Assets\Scripts\Race Manager\AICarController.cs" />
     <Compile Include="Assets\Scripts\Race Manager\FinishLineTrigger.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Assets\Scripts\Race Manager\CountdownManager.cs" />
     <Compile Include="Assets\Scripts\GarageCarSelector.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CarSpawner.cs" />
-    <Compile Include="Assets\Scripts\Realism test\Real.cs" />
     <Compile Include="Assets\Scripts\Race Manager\RaceManager.cs" />
     <Compile Include="Assets\Scripts\SimpleCarController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />

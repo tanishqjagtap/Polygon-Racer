@@ -5,6 +5,9 @@ public class RaceManager : MonoBehaviour
 {
     public static RaceManager Instance;
 
+    [Header("Race State")]
+    public bool raceStarted = false;
+
     [Header("Checkpoint State")]
     private bool finishArmed = false;
     private bool raceFinished = false;
@@ -43,6 +46,8 @@ public class RaceManager : MonoBehaviour
         if (playerCar != null)
             playerCar.canDrive = false;
 
+        raceStarted = false;
+
         StartCoroutine(StartCountdown());
     }
 
@@ -70,6 +75,8 @@ public class RaceManager : MonoBehaviour
         goImage.SetActive(true);
         if (goSound) audioSource.PlayOneShot(goSound);
 
+        raceStarted = true;
+
         if (playerCar != null)
             playerCar.canDrive = true;
 
@@ -77,7 +84,7 @@ public class RaceManager : MonoBehaviour
         goImage.SetActive(false);
     }
 
-    // ✅ called by middle checkpoint
+    // called by middle checkpoint
     public void ArmFinish()
     {
         if (raceFinished) return;
@@ -86,11 +93,11 @@ public class RaceManager : MonoBehaviour
         Debug.Log("Finish armed");
     }
 
-    // ✅ called by finish line
+    // called by finish line
     public void FinishRace()
     {
         if (raceFinished) return;
-        if (!finishArmed) return; // 🚨 IMPORTANT
+        if (!finishArmed) return;
 
         raceFinished = true;
 
@@ -105,7 +112,6 @@ public class RaceManager : MonoBehaviour
 
         Rigidbody rb = playerCar.GetComponent<Rigidbody>();
 
-        // smooth natural slowdown
         float t = 0f;
         while (rb.linearVelocity.magnitude > 0.5f && t < 4f)
         {

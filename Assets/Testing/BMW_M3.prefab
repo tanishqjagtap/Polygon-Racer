@@ -384,7 +384,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 0
+  m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -454,6 +454,9 @@ MonoBehaviour:
   currentRPM: 0
   currentGear: 1
   speedKmh: 0
+  throttleInput: 0
+  brakeInput: 0
+  steerInput: 0
 --- !u!1 &8057446020823965557
 GameObject:
   m_ObjectHideFlags: 0
