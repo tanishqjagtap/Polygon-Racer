@@ -55,6 +55,7 @@
     <Compile Include="Assets\Scripts\Race Manager\FinishLineTrigger.cs" />
     <Compile Include="Assets\Scripts\RotateCar.cs" />
     <Compile Include="Assets\Scripts\TrackMenuUI.cs" />
+    <Compile Include="Assets\Scripts\opponent\WaypointPainter.cs" />
     <Compile Include="Assets\Scripts\WheelAnimator.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CheckpointTrigger.cs" />
     <Compile Include="Assets\Scripts\Race Manager\CountdownManager.cs" />

@@ -10,7 +10,7 @@ public class RaceManager : MonoBehaviour
 
     [Header("Checkpoint State")]
     private bool finishArmed = false;
-    private bool raceFinished = false;
+    public bool raceFinished = false;
 
     [Header("Countdown Images")]
     public GameObject threeImage;

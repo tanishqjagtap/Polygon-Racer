@@ -104,6 +104,15 @@ public class Car : MonoBehaviour
 
     void Update()
     {
+        void Update()
+        {
+            if (!RaceManager.Instance.raceStarted) return;
+            if (RaceManager.Instance == null) return;
+
+            // STOP AI when race finishes
+            if (!RaceManager.Instance.raceStarted) return;
+        }
+
         if (!canDrive)
         {
             throttleInput = 0f;
