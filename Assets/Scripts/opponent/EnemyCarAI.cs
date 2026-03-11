@@ -30,9 +30,12 @@ public class EnemyCarAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         lastPosition = transform.position;
 
-        waypoints = new Transform[waypointParent.childCount];
-        for (int i = 0; i < waypoints.Length; i++)
-            waypoints[i] = waypointParent.GetChild(i);
+        int count = waypointParent.childCount;
+        waypoints = new Transform[count];
+
+        // Load in REVERSE order to flip direction
+        for (int i = 0; i < count; i++)
+            waypoints[i] = waypointParent.GetChild(count - 1 - i);
     }
 
     void Update()
@@ -117,5 +120,4 @@ public class EnemyCarAI : MonoBehaviour
         if (currentWaypoint < waypoints.Length)
             Gizmos.DrawSphere(waypoints[currentWaypoint].position, 1.5f);
     }
-}
 }
