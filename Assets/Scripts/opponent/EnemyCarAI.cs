@@ -11,8 +11,8 @@ public class EnemyCarAI : MonoBehaviour
     public int lookAheadPoints = 2;
 
     [Header("Stuck Recovery")]
-    public float stuckTime = 2f;
-    public float reverseTime = 1.5f;
+    public float stuckTime = 5f;
+    public float reverseTime = 1f;
 
     private Transform[] waypoints;
     private int currentWaypoint = 0;
@@ -23,6 +23,7 @@ public class EnemyCarAI : MonoBehaviour
     private float reverseTimer = 0f;
     private bool isReversing = false;
     private Vector3 lastPosition;
+    private float positionCheckTimer = 0f;  // check every 1 sec not every frame
 
     void Start()
     {
@@ -33,7 +34,6 @@ public class EnemyCarAI : MonoBehaviour
         int count = waypointParent.childCount;
         waypoints = new Transform[count];
 
-        // Load in REVERSE order to flip direction
         for (int i = 0; i < count; i++)
             waypoints[i] = waypointParent.GetChild(count - 1 - i);
     }
@@ -79,12 +79,22 @@ public class EnemyCarAI : MonoBehaviour
 
     void StuckCheck()
     {
-        if (Vector3.Distance(transform.position, lastPosition) < 0.3f)
-            stuckTimer += Time.deltaTime;
-        else
-            stuckTimer = 0f;
+        // Check position every 1 second instead of every frame
+        // prevents slow corners from falsely triggering reverse
+        positionCheckTimer += Time.deltaTime;
 
-        lastPosition = transform.position;
+        if (positionCheckTimer >= 1f)
+        {
+            float moved = Vector3.Distance(transform.position, lastPosition);
+
+            if (moved < 1f)  // moved less than 1 unit in 1 second = stuck
+                stuckTimer += 1f;
+            else
+                stuckTimer = 0f;
+
+            lastPosition = transform.position;
+            positionCheckTimer = 0f;
+        }
 
         if (stuckTimer >= stuckTime)
         {
